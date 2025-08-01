@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutPrincipal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="#E1F5FE"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clima Actual"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#0277BD"/>
+
+    <EditText
+        android:id="@+id/etCiudad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa una ciudad"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="@drawable/rounded_edittext"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Buscar clima"
+        android:textColor="@android:color/white"
+        android:background="@drawable/rounded_button_primary"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="El resultado aparecerá aquí"
+        android:textSize="18sp"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:minLines="5"
+        android:background="@drawable/rounded_textview"/>
+
+    <Button
+        android:id="@+id/btnPronostico"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver pronóstico de los próximos 5 días"
+        android:background="@drawable/rounded_button_secondary"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
