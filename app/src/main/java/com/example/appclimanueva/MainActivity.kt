@@ -9,8 +9,8 @@ import androidx.lifecycle.lifecycleScope
 import com.example.appclimanueva.databinding.ActivityMainBinding
 import com.example.appclimanueva.model.ClimaResponse
 import com.example.appclimanueva.repository.ClimaRepository
+import com.example.appclimanueva.utils.Constants
 import kotlinx.coroutines.launch
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
         climaRepository = ClimaRepository(this)
 
         binding.btnBuscar.setOnClickListener {
-            val ciudad = binding.etCiudad.text.toString()
+            val ciudad = binding.etCiudad.text.toString().trim()
             if (ciudad.isNotEmpty()) {
                 obtenerClima(ciudad)
             } else {
-                Toast.makeText(this, "Por favor, ingrese una ciudad", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Por favor, ingresa una ciudad", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             val ciudad = binding.etCiudad.text.toString().trim()
             if (ciudad.isNotEmpty()) {
                 val intent = Intent(this, PronosticoActivity::class.java)
-                intent.putExtra("CIUDAD", ciudad)
+                intent.putExtra(Constants.EXTRA_CIUDAD, ciudad)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Por favor, ingresa una ciudad para ver el pronóstico", Toast.LENGTH_SHORT).show()
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
     private fun obtenerClima(ciudad: String) {
         lifecycleScope.launch {
             try {
-
                 binding.progressBar.visibility = View.VISIBLE
                 binding.tvResultado.text = ""
 
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvResultado.text = "Ciudad: ${clima.name}\nTemp: ${clima.main.temp}°C\nDesc: ${clima.weather[0].description}"
             } catch (e: Exception) {
                 binding.tvResultado.text = "Error: ${e.localizedMessage}"
-                Toast.makeText(this@MainActivity, "Error al obtener el clima", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Error al obtener el clima.", Toast.LENGTH_LONG).show()
             } finally {
                 binding.progressBar.visibility = View.GONE
             }

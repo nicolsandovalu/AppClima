@@ -10,19 +10,16 @@ import com.example.appclimanueva.R
 import com.example.appclimanueva.model.PronosticoDia
 
 
-class PronosticoAdapter (private val lista: MutableList<PronosticoDia>) : RecyclerView.Adapter<PronosticoAdapter.ViewHolder>() {
 
-    // Función para actualizar la lista de pronósticos y notificar al RecyclerView.
+class PronosticoAdapter(private val lista: MutableList<PronosticoDia>) : RecyclerView.Adapter<PronosticoAdapter.ViewHolder>() {
+
     fun updateData(nueva: List<PronosticoDia>) {
         lista.clear()
         lista.addAll(nueva)
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_dia_pronostico, parent, false)
         return ViewHolder(v)
     }
@@ -33,7 +30,7 @@ class PronosticoAdapter (private val lista: MutableList<PronosticoDia>) : Recycl
         holder.bind(lista[position])
     }
 
-    class  ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bind(item: PronosticoDia) {
             val tvFecha = itemView.findViewById<TextView>(R.id.tvFecha)
             val tvTemp = itemView.findViewById<TextView>(R.id.tvTemp)
