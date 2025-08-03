@@ -4,7 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 
 data class PronosticoResponse(
-    val list: List<PronosticoDia>
+    val list: List<PronosticoDia>,
+    val city: Ciudad
 )
 
 data class PronosticoDia(
@@ -13,3 +14,7 @@ data class PronosticoDia(
     val weather: List<Weather>
 )
 
+data class Ciudad(
+    @SerializedName("name") val name: String,
+    @SerializedName("country") val country: String
+)

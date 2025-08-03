@@ -1,7 +1,9 @@
 package com.example.appclimanueva.api
 
 import com.example.appclimanueva.model.ClimaResponse
+import com.example.appclimanueva.model.PronosticoDia
 import com.example.appclimanueva.model.PronosticoResponse
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -14,7 +16,7 @@ interface ClimaApiService {
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric",
         @Query("lang") lang: String = "es"
-    ): ClimaResponse
+    ): Response<ClimaResponse>
 
     @GET("forecast")
     suspend fun obtenerPronostico(
@@ -22,5 +24,5 @@ interface ClimaApiService {
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric",
         @Query("lang") lang: String = "es"
-    ): PronosticoResponse
+    ): Response<PronosticoResponse>
 }

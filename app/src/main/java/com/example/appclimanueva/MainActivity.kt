@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val repo = ClimaRepository()
+    private lateinit var climaRepository: ClimaRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
     private fun obtenerClima(ciudad: String) {
         lifecycleScope.launch {
             try {
-                val clima: ClimaResponse = repo.obtenerClima(ciudad)
+                val clima: ClimaResponse = climaRepository.obtenerClima(ciudad)
                 binding.tvResultado.text = "Ciudad: ${clima.name}\nTemp: ${clima.main.temp}°C\nDesc: ${clima.weather[0].description}"
             } catch (e: Exception) {
                 binding.tvResultado.text = "Error: ${e.localizedMessage}"
