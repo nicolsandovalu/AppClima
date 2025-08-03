@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.appclimanueva.databinding.ActivityMainBinding
 import com.example.appclimanueva.model.ClimaResponse
 import com.example.appclimanueva.repository.ClimaRepository
@@ -52,7 +53,15 @@ class MainActivity : AppCompatActivity() {
                 binding.tvResultado.text = ""
 
                 val clima: ClimaResponse = climaRepository.obtenerClima(ciudad)
-                binding.tvResultado.text = "Ciudad: ${clima.name}\nTemp: ${clima.main.temp}°C\nDesc: ${clima.weather[0].description}"
+
+                // Cargar el icono del clima
+                val iconUrl = "https://openweathermap.org/img/wn/${clima.weather[0].icon}@2x.png"
+                Glide.with(this@MainActivity)
+                    .load(iconUrl)
+                    .into(binding.ivClimaIcon)
+
+
+                binding.tvResultado.text = "Ciudad: ${clima.name}\nTemperatura: ${clima.main.temp}°C\nNubosidad: ${clima.weather[0].description}"
             } catch (e: Exception) {
                 binding.tvResultado.text = "Error: ${e.localizedMessage}"
                 Toast.makeText(this@MainActivity, "Error al obtener el clima.", Toast.LENGTH_LONG).show()

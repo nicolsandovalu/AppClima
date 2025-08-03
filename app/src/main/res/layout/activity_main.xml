@@ -67,7 +67,7 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:visibility="gone"
         android:contentDescription="Cargando clima..."
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,24 +84,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/progressBar">
 
+
         <TextView
             android:id="@+id/tvResultado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="El resultado aparecerá aquí"
-            android:textSize="18sp"
-            android:padding="16dp"
+            android:layout_height="153dp"
+            android:background="@android:color/transparent"
             android:gravity="center"
             android:minLines="5"
-            android:textColor="#333333"/>
+            android:padding="16dp"
+            android:text="El resultado aparecerá aquí"
+            android:textColor="#333333"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ivClimaIcon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="Icono de clima" />
+
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnPronostico"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="152dp"
-        android:background="@drawable/rounded_button_secondary"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/rounded_button_primary"
         android:text="Ver pronóstico de los próximos 5 días"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
