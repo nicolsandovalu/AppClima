@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutPronostico"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="#F5F5F5"
     tools:context=".PronosticoActivity">
+
+    <!-- Añadir un Toolbar para la flecha de retroceso y el título -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:titleTextColor="@android:color/white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
     <TextView
         android:id="@+id/tvTituloPronostico"
@@ -20,13 +28,21 @@
         android:textStyle="bold"
         android:gravity="center_horizontal"
         android:textColor="#333333"
-        android:layout_marginBottom="16dp"/>
+        android:layout_margin="16dp"/>
+
+    <!-- Añadir un ProgressBar para indicar la carga de datos -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPronostico"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_dia_pronostico"/>
-
 
 </LinearLayout>

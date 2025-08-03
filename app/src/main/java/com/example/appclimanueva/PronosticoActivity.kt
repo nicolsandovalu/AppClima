@@ -25,6 +25,12 @@ class PronosticoActivity : AppCompatActivity() {
         binding = ActivityPronosticoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Configurar el Toolbar como ActionBar y añadir la flecha de retroceso
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Pronóstico"
+
+
         val ciudad = intent.getStringExtra("ciudad") ?: run {
             Toast.makeText(this, "No se especificó ciudad", Toast.LENGTH_SHORT).show()
             finish()
@@ -47,6 +53,8 @@ class PronosticoActivity : AppCompatActivity() {
     private fun obtenerPronostico(ciudad: String) {
         lifecycleScope.launch {
             try {
+                // Muestra el ProgressBar y limpia el resultado anterior
+                binding.progressBar.visibility = View.VISIBLE
 
                 val response: PronosticoResponse = repo.obtenerPronostico(ciudad)
 
@@ -59,6 +67,8 @@ class PronosticoActivity : AppCompatActivity() {
                 Toast.makeText(this@PronosticoActivity, "Error de conexión o de la API", Toast.LENGTH_LONG).show()
                 Log.e("API_ERROR", "Error al obtener pronóstico", e)
             } finally {
+                // Oculta el ProgressBar al finalizar
+                binding.progressBar.visibility = View.GONE
 
             }
         }
