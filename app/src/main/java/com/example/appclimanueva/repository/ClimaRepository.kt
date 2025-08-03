@@ -11,11 +11,11 @@ class ClimaRepository {
 
     private val api = RetrofitClient.instance.create(ClimaApiService::class.java)
 
-    private val apiKey = "API_KEY"
+    private val apiKey = "8dd22c27d86a9a004c6ccf47415ff043"
 
     suspend fun obtenerClima(ciudad: String): ClimaResponse {
         return try {
-            if (apiKey == "API_KEY") {
+            if (apiKey == "8dd22c27d86a9a004c6ccf47415ff043") {
                 throw Exception("Por favor configura tu API key de OpenWeatherMap")
             }
             api.obtenerClimaActual(ciudad, apiKey)
@@ -26,7 +26,7 @@ class ClimaRepository {
 
     suspend fun obtenerPronostico(ciudad: String): PronosticoResponse {
         return try {
-            if (apiKey == "API_KEY") {
+            if (apiKey == "8dd22c27d86a9a004c6ccf47415ff043") {
                 throw Exception("Por favor configura tu API key de OpenWeatherMap")
             }
             api.obtenerPronostico(ciudad, apiKey)
