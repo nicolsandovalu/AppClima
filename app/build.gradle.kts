@@ -62,4 +62,6 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     // Location services
     implementation("com.google.android.gms:play-services-location:19.0.1")
+
+    implementation("com.github.bumptech.glide:glide:4.12.0")
 }
