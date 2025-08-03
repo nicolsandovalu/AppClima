@@ -14,29 +14,7 @@
 
 ## 🏗️ Estructura del Proyecto
 
-El proyecto sigue una arquitectura modular y organizada:
-app/
-├── src/main/java/com/example/appclimanueva/
-│ ├── MainActivity.kt # Pantalla de clima actual
-│ ├── PronosticoActivity.kt # Pantalla de pronóstico
-│ ├── adapter/
-│ │ └── PronosticoAdapter.kt # Adaptador para RecyclerView
-│ ├── api/
-│ │ ├── ClimaApiService.kt # Interfaz Retrofit
-│ │ └── RetrofitClient.kt # Cliente Retrofit
-│ ├── model/
-│ │ ├── ClimaResponse.kt # Modelos de datos (clima actual)
-│ │ └── PronosticoResponse.kt # Modelos de datos (pronóstico)
-│ ├── repository/
-│ │ └── ClimaRepository.kt # Lógica de capa de datos
-│ └── utils/
-│ └── Constants.kt # Constantes de la app
-└── src/main/res/
-├── drawable/ # Recursos gráficos
-├── layout/ # Layouts XML
-├── mipmap/ # Iconos de app
-└── values/ # Recursos, colores, strings
-
+El proyecto sigue una arquitectura modular y organizada
 
 ## ⚙️ Configuración y Dependencias
 
